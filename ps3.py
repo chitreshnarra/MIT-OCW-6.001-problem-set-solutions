@@ -51,9 +51,7 @@ def get_frequency_dict(sequence):
 # (end of helper code)
 # -----------------------------------
 
-#
-# Problem #1: Scoring a word
-#
+
 def get_word_score(word, n):
     """
     Returns the score for a word. Assumes the word is a
@@ -94,9 +92,7 @@ def get_word_score(word, n):
 
     
 
-#
-# Make sure you understand how this function works and what it does!
-#
+
 def display_hand(hand):
     """
     Displays the letters currently in the hand.
@@ -143,9 +139,7 @@ def deal_hand(n):
     
     return hand
 
-#
-# Problem #2: Update a hand by removing letters
-#
+
 def update_hand(hand, word):
     """
     Does NOT assume that hand contains every letter in word at least as
@@ -177,9 +171,7 @@ def update_hand(hand, word):
             n_hand[letter] = 0
     
     return n_hand
-#
-# Problem #3: Test word validity
-#
+
 def is_valid_word(word, hand, word_list):
     """
     Returns True if word is in the word_list and is entirely
@@ -231,9 +223,7 @@ def is_valid_word(word, hand, word_list):
     
     return in_word_list and in_hand
 
-#
-# Problem #5: Playing a hand
-#
+
 def calculate_handlen(hand):
     """ 
     Returns the length (number of letters) in the current hand.
@@ -416,11 +406,7 @@ def play_game(word_list):
  
     print(score)
     
-#
-# Build data structures used for entire session and play game
-# Do not remove the "if __name__ == '__main__':" line - this code is executed
-# when the program is run directly, instead of through an import statement
-#
+
 if __name__ == '__main__':
     word_list = load_words()
     play_game(word_list)
