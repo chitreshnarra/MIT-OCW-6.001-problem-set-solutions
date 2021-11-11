@@ -332,7 +332,27 @@ def substitute_hand(hand, letter):
     letter: string
     returns: dictionary (string -> int)
     """
+    n_hand = hand.copy()
     
+    if letter in n_hand.keys() :        
+        letter_list = []
+    
+        for l in hand.keys() :
+    
+            if l not in letter_list :
+                letter_list.append(l)
+    
+        choose_from = list(VOWELS+CONSONANTS)
+        letter_list.remove('*')
+    
+        for x in letter_list :
+            choose_from.remove(x)
+    
+        n_letter = random.choice(choose_from)
+        hand[n_letter] = n_hand[letter]
+        hand[letter] = 0
+    
+    return hand
        
     
 def play_game(word_list):
@@ -365,8 +385,36 @@ def play_game(word_list):
 
     word_list: list of lowercase strings
     """
-    hand = deal_hand(10)
-    play_hand(hand,word_list)
+    no_of_rounds = int(input('how many rounds do you want to play?'))
+    score = 0
+    substitutions =  1
+    replay = 1
+    
+    while no_of_rounds != 0 :
+        hand = deal_hand(10)       
+        display_hand(hand) 
+    
+        if substitutions == 1 :
+            ans = input('would you like to substitute a letter ?:(y/n)')
+    
+            if ans == 'y':
+                letter=input('which letter do you want to substitute: ')
+                substitute_hand(hand,letter)
+                substitutions = substitutions - 1
+    
+        total_score = play_hand(hand,word_list)
+    
+        if replay == 1 :
+            score_2 = 0
+            ans = input('do you want to play this hand again:(y/n) ')
+    
+            if ans == 'y' :
+                score_2 = play_hand(hand,word_list)
+                replay = replay - 1
+        score = score+max(total_score,score_2)
+        no_of_rounds -= 1
+ 
+    print(score)
     
 #
 # Build data structures used for entire session and play game
