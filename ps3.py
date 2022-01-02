@@ -79,10 +79,9 @@ def get_word_score(word, n):
     """
     l_word = word.lower()
     word_length = len(word)
-    score = []
+    first_component = 0
     for x in l_word :
-        score.append(SCRABBLE_LETTER_VALUES[x])
-    first_component = sum(score)
+        first_component += (SCRABBLE_LETTER_VALUES[x])    
     if 7*word_length - 3*(n-word_length) >= 1 :
         second_component = 7*word_length - 3*(n-word_length)
     else :
