@@ -22,8 +22,7 @@ while months <= 36 :
     
     if months > 1 and months %6 == 0:
         annual_salary += annual_salary*semi_annual_raise
-    current_saving += current_saving*r/12
-    current_saving += (annual_salary/12)*portion_saved       
+    current_saving += current_saving*r/12 + (annual_salary/12)*portion_saved      
     months += 1
 
 if annual_salary*3 < down_payment :
@@ -36,8 +35,7 @@ else :
         if current_saving > down_payment :
             high = guess
             
-        else :
-            low = guess
+        else :low = guess
 
         guess = (high+low)/2
         guess_percent = guess/10000   
